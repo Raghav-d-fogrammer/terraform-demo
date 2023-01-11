@@ -1,3 +1,22 @@
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "=3.0.0"
+    }
+  }
+  backend "azurerm" {
+    resource_group_name  = "rd-rg-sc"
+    storage_account_name = "rdadls2"
+    container_name       = "tfstate"
+    key                  = "adf.tfstate"
+  }
+}
+
+provider "azurerm" {
+  features {}
+}
+
 resource "azurerm_resource_group" "azure_rg" {
   name     = "rd_adf_test_rg"
   location = "East US2"
