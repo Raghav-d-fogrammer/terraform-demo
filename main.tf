@@ -25,3 +25,9 @@ resource "azurerm_data_factory" "azure_df" {
   location            = "East US2"
   resource_group_name = azurerm_resource_group.azure_rg.name
 }
+
+resource "azurerm_data_factory" "azure_df_02" {
+  name                = "rd-dev-adf-02"
+  location            = "East US2"
+  resource_group_name = azurerm_resource_group.azure_rg.name
+}
