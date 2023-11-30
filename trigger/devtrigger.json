@@ -1,0 +1,24 @@
+{
+	"name": "devtrigger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pipeline1",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/test/blobs/",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/1037e6f0-8fdb-4a7c-b372-3dc4c10e3732/resourceGroups/cloud-shell-storage-southcentralus/providers/Microsoft.Storage/storageAccounts/cs7100320028e21a339",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}
