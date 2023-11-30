@@ -1,0 +1,24 @@
+{
+	"name": "stroageTrigger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pipeline1",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/main/blobs/",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/1037e6f0-8fdb-4a7c-b372-3dc4c10e3732/resourceGroups/rd-aoai/providers/Microsoft.Storage/storageAccounts/rdadftestscus2001",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}
