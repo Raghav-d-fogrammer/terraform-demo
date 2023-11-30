@@ -8,8 +8,8 @@
 		"AzureBlobStorage1_connectionString": {
 			"value": ""
 		},
-		"devtrigger_properties_typeProperties_scope": {
-			"value": "/subscriptions/1037e6f0-8fdb-4a7c-b372-3dc4c10e3732/resourceGroups/cloud-shell-storage-southcentralus/providers/Microsoft.Storage/storageAccounts/cs7100320028e21a339"
+		"stroageTrigger_properties_typeProperties_scope": {
+			"value": "/subscriptions/1037e6f0-8fdb-4a7c-b372-3dc4c10e3732/resourceGroups/rd-aoai/providers/Microsoft.Storage/storageAccounts/rdadftestscus2001"
 		},
 		"containerUri": {
 			"value": ""

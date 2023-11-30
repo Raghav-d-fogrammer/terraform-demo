@@ -11,9 +11,9 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'"
 		},
-		"devtrigger_properties_typeProperties_scope": {
+		"stroageTrigger_properties_typeProperties_scope": {
 			"type": "string",
-			"defaultValue": "/subscriptions/1037e6f0-8fdb-4a7c-b372-3dc4c10e3732/resourceGroups/cloud-shell-storage-southcentralus/providers/Microsoft.Storage/storageAccounts/cs7100320028e21a339"
+			"defaultValue": "/subscriptions/1037e6f0-8fdb-4a7c-b372-3dc4c10e3732/resourceGroups/rd-aoai/providers/Microsoft.Storage/storageAccounts/rdadftestscus2001"
 		},
 		"containerUri": {
 			"type": "string",
@@ -45,8 +45,8 @@
 					"AzureBlobStorage1_connectionString": {
 						"value": "[parameters('AzureBlobStorage1_connectionString')]"
 					},
-					"devtrigger_properties_typeProperties_scope": {
-						"value": "[parameters('devtrigger_properties_typeProperties_scope')]"
+					"stroageTrigger_properties_typeProperties_scope": {
+						"value": "[parameters('stroageTrigger_properties_typeProperties_scope')]"
 					}
 				}
 			},

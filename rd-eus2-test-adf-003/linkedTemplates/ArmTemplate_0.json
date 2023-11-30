@@ -11,9 +11,9 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'"
 		},
-		"devtrigger_properties_typeProperties_scope": {
+		"stroageTrigger_properties_typeProperties_scope": {
 			"type": "string",
-			"defaultValue": "/subscriptions/1037e6f0-8fdb-4a7c-b372-3dc4c10e3732/resourceGroups/cloud-shell-storage-southcentralus/providers/Microsoft.Storage/storageAccounts/cs7100320028e21a339"
+			"defaultValue": "/subscriptions/1037e6f0-8fdb-4a7c-b372-3dc4c10e3732/resourceGroups/rd-aoai/providers/Microsoft.Storage/storageAccounts/rdadftestscus2001"
 		}
 	},
 	"variables": {
@@ -47,9 +47,50 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"fileName": "*.csv",
+						"fileName": "user.csv",
+						"folderPath": "test",
+						"container": "main"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "1",
+						"type": "String"
+					},
+					{
+						"name": "raghav",
+						"type": "String"
+					},
+					{
+						"name": "darisi",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DelimitedText2')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
 						"folderPath": "test001",
-						"container": "test"
+						"container": "main"
 					},
 					"columnDelimiter": ",",
 					"escapeChar": "\\",
@@ -101,7 +142,7 @@
 								"formatSettings": {
 									"type": "DelimitedTextWriteSettings",
 									"quoteAllText": true,
-									"fileExtension": ".txt"
+									"fileExtension": ".csv"
 								}
 							},
 							"enableStaging": false,
@@ -123,7 +164,7 @@
 						],
 						"outputs": [
 							{
-								"referenceName": "DelimitedText1",
+								"referenceName": "DelimitedText2",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
@@ -137,11 +178,12 @@
 				"lastPublishTime": "2023-11-29T20:22:17Z"
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/DelimitedText1')]"
+				"[concat(variables('factoryId'), '/datasets/DelimitedText1')]",
+				"[concat(variables('factoryId'), '/datasets/DelimitedText2')]"
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/devtrigger')]",
+			"name": "[concat(parameters('factoryName'), '/stroageTrigger')]",
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -158,9 +200,9 @@
 				],
 				"type": "BlobEventsTrigger",
 				"typeProperties": {
-					"blobPathBeginsWith": "/test/blobs/",
-					"ignoreEmptyBlobs": true,
-					"scope": "[parameters('devtrigger_properties_typeProperties_scope')]",
+					"blobPathBeginsWith": "/main/blobs/*.csv",
+					"ignoreEmptyBlobs": false,
+					"scope": "[parameters('stroageTrigger_properties_typeProperties_scope')]",
 					"events": [
 						"Microsoft.Storage.BlobCreated"
 					]
